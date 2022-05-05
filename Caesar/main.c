@@ -7,6 +7,7 @@
 char *caeser();
 int key();
 char *usage();
+char *default_caeser(char text[]);
 
 char text[MAX_VALUE];
 char letter;
@@ -24,12 +25,17 @@ int main(int argc, char *argv[]){
         if (strcmp(argv[1], "-c") == 0)
         {
             // To be tested about the key To be tested about the key To be tested about the key To be tested about the key To be tested about the key
-            custom_key = atoi(argv[2]);
+            //custom_key = atoi(argv[2]);
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
             key(custom_key);
-            caeser();
+            caeser(text);
         }
+        
         else if(strcmp(argv[1], "-d") == 0){
-            caeser();
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
+            default_caeser(text);
         }
         else if(strcmp(argv[1], "-cd_code") == 0){
             caeser();
@@ -74,16 +80,6 @@ int main(int argc, char *argv[]){
     }
     //////////////////////////////////////////////////////////////////////////////////////
     
-
-    //test
-    
-    printf("%d\n", keys_array[0]);
-    key();
-    printf("%d\n", keys_array[0]);
-
-    
-    //
-    caeser(text);
     return 0;
 }
 
@@ -92,8 +88,7 @@ char *usage(){
 }
 
 char *caeser(char text[]){
-    printf("Enter the text: ");
-    fgets(text, MAX_VALUE, stdin);
+
     for (int i = 0; i <= strlen(text); i++)
     {
         // text[i] >= 65 && text[i] <= 90
@@ -135,41 +130,7 @@ int key(int in_key){
     keys_array[0] = in_key;
 }
 
-/*
-Usage:
-    -c : Custom_key
-    -d : default (the shift by 3)
-    -h : help
-    Caesar Varients
-        -cd_code        : CD code (the shift is 1)
-        -jail           : Jail (the shift is 2)    
-        -ellen          : Ellen (the shift is 2)
-        -cutie          : Cutie (the shift is 3)
-        -eiffel         : Eiffel (the shift is 6)
-        -wc_code        : WC code (the shift is 6)
-        -empty          : Empty (the shift is 7)
-        -baden_powell   : Baden Powell (the shift is 14)
-        -any            : Any (the shift is 17)
-        -see_you        : See You (the shift is 18)
-        -i_see          : I_See (the shift is 20)
-        -easy           : Easy (the shift is 21)
-examples:
-    ./caeser -c 4
-    ./caeser -d
-    ./caeser -ellen
-    ./caeser -easy
-*/
-
-/*
--c shoud be tested to argv[2] as the key
-*/
-
-/*
-BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP 
-
-char *caeser(char text[]){
-    printf("Enter the text: ");
-    fgets(text, MAX_VALUE, stdin);
+char *default_caeser(char text[]){
     for (int i = 0; i <= strlen(text); i++)
     {
         // text[i] >= 65 && text[i] <= 90
@@ -206,5 +167,39 @@ char *caeser(char text[]){
     }
     printf("%s\n", result);
 }
+
+/*
+Usage:
+    -c : Custom_key
+    -d : default (the shift by 3)
+    -h : help
+    Caesar Varients
+        -cd_code        : CD code (the shift is 1)
+        -jail           : Jail (the shift is 2)    
+        -ellen          : Ellen (the shift is 2)
+        -cutie          : Cutie (the shift is 3)
+        -eiffel         : Eiffel (the shift is 6)
+        -wc_code        : WC code (the shift is 6)
+        -empty          : Empty (the shift is 7)
+        -baden_powell   : Baden Powell (the shift is 14)
+        -any            : Any (the shift is 17)
+        -see_you        : See You (the shift is 18)
+        -i_see          : I_See (the shift is 20)
+        -easy           : Easy (the shift is 21)
+examples:
+    ./caeser -c 4
+    ./caeser -d
+    ./caeser -ellen
+    ./caeser -easy
+*/
+
+/*
+-c shoud be tested to argv[2] as the key
+*/
+
+/*
+BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP 
+
+
 
 */
