@@ -5,15 +5,11 @@
 #define MAX_VALUE 65536
 
 char *caeser_encrypt();
-//int key();
 char *usage();
 char *caeser_decrypt();
-//char *default_caeser(char text[]);
 
 char text[MAX_VALUE];
-char letter;
 char result[MAX_VALUE];
-int keys_array[5] = {3, 23, 0};
 int key;
 char character;
 
@@ -26,13 +22,10 @@ int main(int argc, char *argv[]){
     else{
         if (strcmp(argv[1], "-c") == 0)
         {
-            // To be tested about the key To be tested about the key To be tested about the key To be tested about the key To be tested about the key
-            //custom_key = atoi(argv[2]);
             printf("Enter the text: ");
             fgets(text, MAX_VALUE, stdin);
             printf("Key: ");
             scanf("%d", &key);
-            //key(custom_key);
             caeser_encrypt(text, key);
         }
         
@@ -105,6 +98,10 @@ int main(int argc, char *argv[]){
             printf("Help!!");
             usage();
         }
+        else{
+            printf("ERROR\n");
+            usage();
+        }
     }
     return 0;
 }
@@ -165,7 +162,7 @@ char *caeser_encrypt(char str[], int key){
     printf("Encrypted Message : \n%s\n", result);
 }
 
-char *caeser_decrypt(char *text, int key){
+char *caeser_decrypt(char str[], int key){
     for (int i = 0; i <= strlen(text); i++)
     {
         character = text[i];
@@ -218,15 +215,4 @@ examples:
     ./caeser -d
     ./caeser -ellen
     ./caeser -easy
-*/
-
-/*
--c shoud be tested to argv[2] as the key
-*/
-
-/*
-BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP BACKUP 
-
-
-
 */
