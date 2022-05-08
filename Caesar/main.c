@@ -5,7 +5,7 @@
 #define MAX_VALUE 65536
 
 char *caeser();
-int key();
+//int key();
 char *usage();
 char *default_caeser(char text[]);
 
@@ -13,7 +13,8 @@ char text[MAX_VALUE];
 char letter;
 char result[MAX_VALUE];
 int keys_array[5] = {3, 23, 0};
-int custom_key;
+int key;
+char character;
 
 int main(int argc, char *argv[]){
 
@@ -28,8 +29,10 @@ int main(int argc, char *argv[]){
             //custom_key = atoi(argv[2]);
             printf("Enter the text: ");
             fgets(text, MAX_VALUE, stdin);
+            printf("Key: ");
+            scanf("%d", &key);
             //key(custom_key);
-            caeser(text);
+            caeser(text, key);
         }
         
         else if(strcmp(argv[1], "-d") == 0){
@@ -108,83 +111,33 @@ char *usage(){
     printf("    ./caeser -easy\n");
 }
 
-char *caeser(char text[]){
+char *caeser(char str[], int key){
 
     for (int i = 0; i <= strlen(text); i++)
     {
-        // text[i] >= 65 && text[i] <= 90
-        if ( (text[i] >= 65 && text[i] <= 87) || (text[i] >= 97 && text[i] <= 119))
+        character = text[i];
+
+        //For Simple Letters
+        if (character >= 'a' && character <= 'z')
         {
-            letter = text[i] + keys_array[0];
-            strncat(result, &letter, 1);
+            character = character + key;
+            if(character > 'z')
+            {
+                character = character - 'z' + 'a' - 1;
+            }
+            str[i] = character;
         }
 
-        else if( ((text[i] >= 88 && text[i] <= 90) || (text[i] >= 120 && text[i] <= 122)) ){
-            letter = text[i] - keys_array[1];
-            strncat(result, &letter, 1);
+        //For Capital Letters
+        else if(character >= 'A' && character <= 'Z'){
+            character = character + key;
+            if(character > 'Z')
+            {
+                character = character - 'Z' + 'A' - 1;
+            }
+            str[i] = character;
         }
-
-        //other characters
-        //space    
-        else if(text[i] == 32){
-            letter = text[i] - keys_array[2];
-            strncat(result, &letter, 1);
-        }
-
-        //numbers and symbols
-        else if(text[i] >= 33 && text[i] <= 64){
-            letter = text[i] - keys_array[2];
-            strncat(result, &letter, 1);
-        }
-
-        //symbols
-        else if(text[i] >= 123 && text[i] <= 126){
-            letter = text[i] - keys_array[2];
-            strncat(result, &letter, 1);
-        }
-        
-    }
-    printf("%s\n", result);
-}
-
-int key(int in_key){
-    keys_array[0] = in_key;
-}
-
-char *default_caeser(char text[]){
-    for (int i = 0; i <= strlen(text); i++)
-    {
-        // text[i] >= 65 && text[i] <= 90
-        if ( (text[i] >= 65 && text[i] <= 87) || (text[i] >= 97 && text[i] <= 119))
-        {
-            letter = text[i] + 3;
-            strncat(result, &letter, 1);
-        }
-
-        else if( ((text[i] >= 88 && text[i] <= 90) || (text[i] >= 120 && text[i] <= 122)) ){
-            letter = text[i] - 23;
-            strncat(result, &letter, 1);
-        }
-
-        //other characters
-        //space    
-        else if(text[i] == 32){
-            letter = text[i] - 0;
-            strncat(result, &letter, 1);
-        }
-
-        //numbers and symbols
-        else if(text[i] >= 33 && text[i] <= 64){
-            letter = text[i] - 0;
-            strncat(result, &letter, 1);
-        }
-
-        //symbols
-        else if(text[i] >= 123 && text[i] <= 126){
-            letter = text[i] - 0;
-            strncat(result, &letter, 1);
-        }
-        
+        strncat(result, &str[i], 1);
     }
     printf("%s\n", result);
 }
