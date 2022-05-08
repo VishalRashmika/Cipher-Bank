@@ -28,7 +28,7 @@ int main(int argc, char *argv[]){
             //custom_key = atoi(argv[2]);
             printf("Enter the text: ");
             fgets(text, MAX_VALUE, stdin);
-            key(custom_key);
+            //key(custom_key);
             caeser(text);
         }
         
@@ -84,7 +84,28 @@ int main(int argc, char *argv[]){
 }
 
 char *usage(){
-    
+    printf("Usage:\n");
+    printf("-c : Custom_key\n");
+    printf("-d : default (the shift by 3)\n");
+    printf("-h : help\n");
+    printf("Caesar Varients\n");
+    printf("    -cd_code        : CD code (the shift is 1)\n");
+    printf("    -jail           : Jail (the shift is 2)   \n"); 
+    printf("    -ellen          : Ellen (the shift is 2)\n");
+    printf("    -cutie          : Cutie (the shift is 3)\n");
+    printf("    -eiffel         : Eiffel (the shift is 6)\n");
+    printf("    -wc_code        : WC code (the shift is 6)\n");
+    printf("    -empty          : Empty (the shift is 7)\n");
+    printf("    -baden_powell   : Baden Powell (the shift is 14)\n");
+    printf("    -any            : Any (the shift is 17)\n");
+    printf("    -see_you        : See You (the shift is 18\n");
+    printf("    -i_see          : I_See (the shift is 20)\n");
+    printf("    -easy           : Easy (the shift is 21)\n");
+    printf("examples:\n");
+    printf("    ./caeser -c 4\n");
+    printf("    ./caeser -d\n");
+    printf("    ./caeser -ellen\n");
+    printf("    ./caeser -easy\n");
 }
 
 char *caeser(char text[]){
