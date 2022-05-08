@@ -4,10 +4,11 @@
 #include<ctype.h>
 #define MAX_VALUE 65536
 
-char *caeser();
+char *caeser_encrypt();
 //int key();
 char *usage();
-char *default_caeser(char text[]);
+char *caeser_decrypt();
+//char *default_caeser(char text[]);
 
 char text[MAX_VALUE];
 char letter;
@@ -32,57 +33,79 @@ int main(int argc, char *argv[]){
             printf("Key: ");
             scanf("%d", &key);
             //key(custom_key);
-            caeser(text, key);
+            caeser_encrypt(text, key);
         }
         
         else if(strcmp(argv[1], "-d") == 0){
             printf("Enter the text: ");
             fgets(text, MAX_VALUE, stdin);
-            default_caeser(text);
+            caeser_encrypt(text, 3);
         }
         else if(strcmp(argv[1], "-cd_code") == 0){
-            caeser();
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
+            caeser_encrypt(text, 1);
         }
         else if(strcmp(argv[1], "-jail") == 0){
-            caeser();
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
+            caeser_encrypt(text, 2);
         }
         else if(strcmp(argv[1], "-ellen") == 0){
-            caeser();
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
+            caeser_encrypt(text, 2);
         }
         else if(strcmp(argv[1], "-cutie") == 0){
-            caeser();
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
+            caeser_encrypt(text, 3);
         }
         else if(strcmp(argv[1], "eiffel") == 0){
-            caeser();
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
+            caeser_encrypt(text, 6);
         }
         else if(strcmp(argv[1], "-wc_code") == 0){
-            caeser();
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
+            caeser_encrypt(text, 6);
         }
         else if(strcmp(argv[1], "-empty") == 0){
-            caeser();
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
+            caeser_encrypt(text, 7);
         }
         else if(strcmp(argv[1], "-baden_powell") == 0){
-            caeser();
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
+            caeser_encrypt(text, 14);
         }
         else if(strcmp(argv[1], "-any") == 0){
-            caeser();
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
+            caeser_encrypt(text, 17);
         }
         else if(strcmp(argv[1], "-see_you") == 0){
-            caeser();
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
+            caeser_encrypt(text, 18);
         }
         else if(strcmp(argv[1], "-i_see") == 0){
-            caeser();
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
+            caeser_encrypt(text, 20);
         }
         else if(strcmp(argv[1], "-easy") == 0){
-            caeser();
+            printf("Enter the text: ");
+            fgets(text, MAX_VALUE, stdin);
+            caeser_encrypt(text, 21);
         }
         else if(strcmp(argv[1], "-h") == 0){
+            printf("Help!!");
             usage();
         }
-        
     }
-    //////////////////////////////////////////////////////////////////////////////////////
-    
     return 0;
 }
 
@@ -111,7 +134,7 @@ char *usage(){
     printf("    ./caeser -easy\n");
 }
 
-char *caeser(char str[], int key){
+char *caeser_encrypt(char str[], int key){
 
     for (int i = 0; i <= strlen(text); i++)
     {
@@ -139,7 +162,37 @@ char *caeser(char str[], int key){
         }
         strncat(result, &str[i], 1);
     }
-    printf("%s\n", result);
+    printf("Encrypted Message : \n%s\n", result);
+}
+
+char *caeser_decrypt(char *text, int key){
+    for (int i = 0; i <= strlen(text); i++)
+    {
+        character = text[i];
+
+        //For Simple Letters
+        if (character >= 'a' && character <= 'z')
+        {
+            character = character + key;
+            if(character > 'z')
+            {
+                character = character + 'z' - 'a' + 1;
+            }
+            str[i] = character;
+        }
+
+        //For Capital Letters
+        else if(character >= 'A' && character <= 'Z'){
+            character = character + key;
+            if(character > 'Z')
+            {
+                character = character + 'Z' - 'A' + 1;
+            }
+            str[i] = character;
+        }
+        strncat(result, &str[i], 1);
+    }
+    printf("Decrypted Message : \n%s\n", result);
 }
 
 /*
