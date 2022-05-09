@@ -108,7 +108,7 @@ int main(int argc, char *argv[]){
 
 char *usage(){
     printf("Usage:\n");
-    printf("-c : Custom_key\n");
+    printf("-c : Custom key\n");
     printf("-d : default (the shift by 3)\n");
     printf("-h : help\n");
     printf("Caesar Varients\n");
@@ -125,7 +125,7 @@ char *usage(){
     printf("    -i_see          : I_See (the shift is 20)\n");
     printf("    -easy           : Easy (the shift is 21)\n");
     printf("examples:\n");
-    printf("    ./caeser -c 4\n");
+    printf("    ./caeser -c\n");
     printf("    ./caeser -d\n");
     printf("    ./caeser -ellen\n");
     printf("    ./caeser -easy\n");

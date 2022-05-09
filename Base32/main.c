@@ -67,4 +67,8 @@ int main()
 NOTE:
 space bin value
 test base32 with a space
+
+JBSWY3DPEBLW64TMMQQSAMJSGM======
+"Hello World! 123"
 */
+
