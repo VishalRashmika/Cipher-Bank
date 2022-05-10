@@ -4,7 +4,7 @@
 [![forthebadge made-with-c](https://our-gallery.cf/jmvrp/made-with-c.svg)]()
 
 # Cipher Bank
-A collection of ciphers i recreated in c.
+A collection of ciphers I recreated in c.
 
 
 ## Ciphers
